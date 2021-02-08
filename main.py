@@ -12,8 +12,14 @@ class AppMainWindow(QMainWindow):
 
         self.pushButton.clicked.connect(self.show_map)
 
+        self.server = "http://static-maps.yandex.ru/1.x/"
+
     def show_map(self):
-        pass
+        try:
+            coords = [float(self.lineEdit.text()), float(self.lineEdit_2.text())]
+        except:
+            self.statusBar().showMessage("Неверный формат координат", 1000)
+
 
 
 if __name__ == "__main__":
