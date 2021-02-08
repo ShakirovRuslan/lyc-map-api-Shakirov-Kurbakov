@@ -24,7 +24,7 @@ class AppMainWindow(QMainWindow):
         try:
             coords = [float(self.lineEdit.text()), float(self.lineEdit_2.text())]
         except:
-            self.statusBar().showMessage("Неверный формат координат", 1000)
+            self.statusBar().showMessage("Неверный формат координат", 3000)
             is_coords_right = False
 
         if is_coords_right:
@@ -36,14 +36,14 @@ class AppMainWindow(QMainWindow):
                 "size": ",".join([str(i) for i in [450, 450]])
             }
             response = requests.get(self.server, params=map_params)
-            print(response)
-            print(response.headers)
-            print(response.url)
             if response:
                 map = Image.open(BytesIO(response.content))
-                self.qimg = ImageQt(map)
-                self.pixmap = QPixmap.fromImage(self.qimg)
-                self.label_4.setPixmap(self.pixmap)
+                qimg = ImageQt(map)
+                pixmap = QPixmap.fromImage(qimg)
+                self.label_4.setPixmap(pixmap)
+            else:
+                self.statusBar().showMessage(f"Ошибка {str(response.status_code)}", 3000)
+
 
 
 
