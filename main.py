@@ -42,7 +42,7 @@ class AppMainWindow(QMainWindow):
             if response:
                 map = Image.open(BytesIO(response.content))
                 self.qimg = ImageQt(map)
-                self.pixmap = QPixmap.fromImage(self.qimg).scaled(241, 241)
+                self.pixmap = QPixmap.fromImage(self.qimg)
                 self.label_4.setPixmap(self.pixmap)
 
 
