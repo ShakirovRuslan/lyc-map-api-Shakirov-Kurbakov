@@ -62,7 +62,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Ширина</string>
+     <string>Широта</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_2">
